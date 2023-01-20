@@ -1,0 +1,13 @@
+{
+    "time_wait_business_detail_page": 3,
+    "time_load_maps_list": 5,
+    "time_interval_scroll_down": 0.5,
+    "time_wait_to_open_sublink": 3,
+    "time_wait_for_home_page": 5,
+    "non_searchable_domains": [
+        "google",
+        "facebook",
+        "business.site",
+        ".edu"
+    ]
+}
