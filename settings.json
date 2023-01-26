@@ -9,5 +9,6 @@
         "facebook",
         "business.site",
         ".edu"
-    ]
+    ],
+    "fetch_emails": false
 }

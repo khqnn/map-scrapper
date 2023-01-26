@@ -24,6 +24,7 @@ time_load_maps_list = settings['time_load_maps_list']
 time_interval_scroll_down = settings['time_interval_scroll_down']
 time_wait_to_open_sublink = settings['time_wait_to_open_sublink']
 time_wait_for_home_page = settings['time_wait_for_home_page']
+fetch_emails = settings['fetch_emails']
 
 
 non_searchable_domains = settings['non_searchable_domains']
@@ -230,8 +231,10 @@ task_name = query_data['task_name']
 
 data_file_name = 'data.csv'
 
+if not os.path.exists('outputs'):
+    os.mkdir('outputs')
+
 outdir = f"outputs/{task_name}"
-print(os.mkdir(outdir))
 if not os.path.exists(outdir):
     os.mkdir(outdir)
 
@@ -264,8 +267,6 @@ if state == 'links_fetched':
         except:
             pass
 
-        print(index, 'fetched_business_details', fetched_business_details)
-
         if not fetched_business_details or str(fetched_business_details) == 'nan':
             business_details = fetch_business_details(link, driver)
             business_website = business_details['business_website']
@@ -284,7 +285,7 @@ if state == 'links_fetched':
         else:
             business_website = data['business_website']
 
-        if not fetched_business_emails or str(fetched_business_emails) == 'nan':
+        if fetch_emails and ( not fetched_business_emails or str(fetched_business_emails) == 'nan'):
             print(business_website)
             emails_list = fetch_all_emails(business_website, driver)
             emails_string = ','.join(emails_list)
